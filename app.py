@@ -3,9 +3,12 @@ import pandas as pd
 from recommender import hybrid_recommend, recommend_by_genre, recommend_by_keyword, surprise_me, load_data
 
 app = Flask(__name__)
+# ======================
+# Load dataset once at startup from Azure Blob Storage
+# ======================
+BLOB_URL = "https://strmovies.blob.core.windows.net/datasets-movies/movies_metadata.csv"
 
-# Load dataset once at startup
-load_data("movies_metadata.csv")
+load_data(BLOB_URL)
 
 @app.route("/")
 def home():
@@ -34,3 +37,4 @@ def recommend():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
