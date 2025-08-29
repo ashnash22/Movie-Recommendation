@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Results 🎥</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>✨ Your Movie Recommendations</h1>
+    <div class="results">
+        {% if result %}
+            {% for line in result.split('\n') %}
+                <div class="card">{{ line }}</div>
+            {% endfor %}
+        {% else %}
+            <p>No recommendations found.</p>
+        {% endif %}
+    </div>
+    <a href="/" class="back">⬅ Back to Home</a>
+</body>
+</html>
